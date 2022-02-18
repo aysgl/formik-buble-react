@@ -1,40 +1,26 @@
 import { useFormik } from 'formik';
 import { createContext, useEffect, useState } from 'react'
 import validationSchema from '../validation';
+import { useNavigate } from "react-router-dom";
+import { collection } from '../data/collection';
 
 export const FormContext = createContext()
 
 export const FormProvider = ({ children }) => {
+    let navigate = useNavigate();
     const [number, setNumber] = useState(50);
 
-    const collection = [
-        { name: "aries" },
-        { name: "taurus" },
-        { name: "gemini" },
-        { name: "cancer" },
-        { name: "leo" },
-        { name: "virgo" },
-        { name: "libra" },
-        { name: "scorpio" },
-        { name: "sagittarius" },
-        { name: "capricorn" },
-        { name: "aquarius" },
-        { name: "pisces" }
-    ]
-
-    const { handleSubmit, handleChange, handleBlur, values, errors, touched } = useFormik({
+    const { handleSubmit, handleChange, handleBlur, values, errors, touched, actions } = useFormik({
         initialValues: {
+            id: collection.id,
             name: 'jane',
             lastname: 'doe',
             email: 'jane@doe.com',
-            password: "",
-            passwordConfirm: "",
             gender: "female",
             horoscope: ["leo"],
-            validateOnChange: true
         },
         onSubmit: values => {
-            console.log(values);
+            navigate(`/${values.horoscope}`);
         }
     })
 
@@ -50,7 +36,15 @@ export const FormProvider = ({ children }) => {
     }, []);
 
     const value = {
-        handleSubmit, handleChange, handleBlur, values, errors, touched, number, collection
+        handleSubmit,
+        handleChange,
+        handleBlur,
+        values,
+        errors,
+        touched,
+        actions,
+        number,
+        collection,
     }
 
     return <FormContext.Provider value={value}>{children}</FormContext.Provider>

@@ -1,10 +1,15 @@
+import { Routes, Route } from 'react-router-dom';
 import { FormProvider } from './context/FormContext';
-import FormikBubble from './page/FormikBubble';
+import Home from './page/home';
+import User from './page/user';
 
 function App() {
   return (
     <FormProvider>
-      <FormikBubble />
+      <Routes>
+        <Route exact path="/" element={<Home />} />
+        <Route exact path="/:horoscope" element={<User />} />
+      </Routes>
     </FormProvider>
   );
 }

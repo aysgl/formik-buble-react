@@ -1,10 +1,11 @@
 import React, { useContext } from 'react'
-import { FormGroup, Label, Input, Form, Row, Col, FormFeedback } from "reactstrap"
+import { FormGroup, Label, Input, Form, Row, Col, FormFeedback, Button } from "reactstrap"
 import { FormContext } from '../context/FormContext'
 
 
 export default function Forms() {
     const { values, errors, handleSubmit, handleChange, handleBlur, touched, collection } = useContext(FormContext)
+
     return (
         <Form className="bg-dark p-4 text-white h-100" onSubmit={handleSubmit}>
             <Row>
@@ -84,9 +85,9 @@ export default function Forms() {
                 </FormGroup>
             </div>
             <Label className='text-secondary small mb-0'>horoscope</Label>
-            <div>
+            <div className='mb-3'>
                 {collection.map(i =>
-                    <FormGroup check className='d-inline-block me-3'>
+                    <FormGroup key={i.name} check className='d-inline-block me-3'>
                         <Input
                             name="horoscope"
                             value={i.name}
@@ -100,9 +101,8 @@ export default function Forms() {
                         </Label>
                     </FormGroup>
                 )}
-
             </div>
-            {/* <Button color='warning' type="submit">Submit</Button> */}
+            <Button color={`${values.gender === "female" ? `warning` : `info`}`} type="submit">Send</Button>
         </Form>
     )
 }
