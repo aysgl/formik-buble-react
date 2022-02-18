@@ -1,8 +1,11 @@
-import FormikExample from './FormikExample';
+import { FormProvider } from './context/FormContext';
+import FormikBubble from './page/FormikBubble';
 
 function App() {
   return (
-    <FormikExample />
+    <FormProvider>
+      <FormikBubble />
+    </FormProvider>
   );
 }
 
