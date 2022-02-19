@@ -102,7 +102,7 @@ export default function Forms() {
                     </FormGroup>
                 )}
             </div>
-            <Button className='fw-bold' color={`${values.gender === "female" ? `warning` : `info`}`} type="submit">Send</Button>
+            <Button className={`fw-bold ${touched.name && touched.lastname ? `d-block` : `d-none`}`} color={`${values.gender === "female" ? `warning` : `info`}`} type="submit">Send</Button>
         </Form>
     )
 }
