@@ -9,7 +9,7 @@ export const collection = [
             lucky_gem: "diamond",
             quality: "cardinal",
             flower: "thistle & honeysuckle",
-            planet: "Mars",
+            planet: "mars",
             love_matches: "sagittarius"
         },
     },

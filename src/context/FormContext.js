@@ -10,9 +10,10 @@ export const FormProvider = ({ children }) => {
     let navigate = useNavigate();
     const [number, setNumber] = useState(50);
 
+
     const { handleSubmit, handleChange, handleBlur, values, errors, touched, actions } = useFormik({
+        // validationSchema: validationSchema,
         initialValues: {
-            id: collection.id,
             name: 'jane',
             lastname: 'doe',
             email: 'jane@doe.com',
@@ -21,8 +22,10 @@ export const FormProvider = ({ children }) => {
         },
         onSubmit: values => {
             navigate(`/${values.horoscope}`);
-        }
+            // localStorage.setItem("values", JSON.stringify(values))
+        },
     })
+    // localStorage.setItem("values", JSON.stringify(values))
 
     useEffect(() => {
         const interval = setInterval(
