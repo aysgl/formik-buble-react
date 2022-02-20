@@ -11,7 +11,7 @@ export default function Output() {
             <div className={`rotate shadow ${values.gender === "female" ? `bg-warning` : `bg-info`} h-100`} style={{ transition: '.5s', borderRadius: `${number}% ${number}% ${number}% ${number}% / ${number}% ${number}% ${number}% ${number}%` }}>
                 <div className='p-4 mb-0 text-warning'>
                     <ListGroup flush className='px-0 text-end'>
-                        <ListGroupItem className='bg-transparent text-dark px-0 border-0' style={{ marginRight: -number + 40, marginTop: -number, transition: "1s" }}>
+                        <ListGroupItem className='bg-transparent text-dark px-0 border-0' style={{ marginRight: -number + 80, marginTop: -number, transition: "1s" }}>
                             <Horoscope />
                         </ListGroupItem>
 
